@@ -2,7 +2,9 @@
 #include "GLFW/glfw3.h"
 #include "glad/glad.h"
 #include "glbasimac/glbi_engine.hpp"
+#include "glbasimac/glbi_set_of_points.hpp"
 #include <iostream>
+#include <vector> // Ajout pour utiliser std::vector
 
 using namespace glbasimac;
 
@@ -12,6 +14,7 @@ static float aspectRatio = 1.0f;
 
 /* OpenGL Engine */
 GLBI_Engine myEngine;
+GLBI_Set_Of_Points thePoints;
 
 /* Error handling function */
 void onError(int error, const char* description) {
@@ -75,6 +78,12 @@ int main() {
 	// Initialize Rendering Engine
 	myEngine.initGL();
 
+    // Création d'un vecteur contenant les coordonnées du point origine
+    std::vector<float> originPoint = {0.0f, 0.0f};
+
+    // Initialisation d'un point blanc à l'origine
+    thePoints.initSet(originPoint[0], originPoint[1], 1.0f, 1.0f, 1.0f); // Couleur blanche (R=1, G=1, B=1)
+
 	/* Loop until the user closes the window */
 	while (!glfwWindowShouldClose(window))
 	{
@@ -85,7 +94,11 @@ int main() {
 		glClearColor(0.2f,0.f,0.f,0.f);
 		glClear(GL_COLOR_BUFFER_BIT);
 
-        // render here
+        // Définir la taille des points
+        glPointSize(4.0);
+
+        // Dessiner les points
+        thePoints.drawSet();
 
 		/* Swap front and back buffers */
 		glfwSwapBuffers(window);
@@ -102,8 +115,6 @@ int main() {
 			elapsedTime = glfwGetTime() - startTime;
 		}
 	}
-
-
 
     glfwTerminate();
     return 0;
