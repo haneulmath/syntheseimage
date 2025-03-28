@@ -78,24 +78,13 @@ int main() {
 	// Initialize Rendering Engine
 	myEngine.initGL();
 
-    // Création d'un vecteur contenant les coordonnées du point origine
-    std::vector<float> originPoint = {0.0f, 0.0f};
-
-    // Initialisation d'un point blanc à l'origine
-    // thePoints.initSet(originPoint[0], originPoint[1], 1.0f, 1.0f, 1.0f); 
-	thePoints.initSet(originPoint, 1.0f, 1.0f, 1.0f);
-
-    // Création d'un vecteur contenant les coordonnées des points supplémentaires
-    std::vector<std::vector<float>> additionalPoints = {
-        {0.5f, 0.0f},
-        {0.0f, 0.5f},
-        {-0.5f, -0.5f}
-    };
-
-    // Ajout des points blancs aux coordonnées spécifiées
-    for (const auto& point : additionalPoints) {
-        thePoints.initSet(point, 1.0f, 1.0f, 1.0f); // Couleur blanche (R=1, G=1, B=1)
-    }
+    // Initialisation des points avec des couleurs différentes
+    thePoints.initSet({
+        {0.0f, 0.0f, 1.0f, 1.0f, 1.0f},  // Point blanc (origine)
+        {0.5f, 0.0f, 1.0f, 0.0f, 0.0f},  // Point rouge
+        {0.0f, 0.5f, 0.0f, 1.0f, 0.0f},  // Point vert
+        {-0.5f, -0.5f, 1.0f, 0.0f, 1.0f} // Point violet
+    });
 
 	/* Loop until the user closes the window */
 	while (!glfwWindowShouldClose(window))
