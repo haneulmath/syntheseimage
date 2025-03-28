@@ -94,7 +94,7 @@ int main() {
 
     // Ajout des points blancs aux coordonnées spécifiées
     for (const auto& point : additionalPoints) {
-        thePoints.addPoint(point, 1.0f, 1.0f, 1.0f); // Couleur blanche (R=1, G=1, B=1)
+        thePoints.initSet(point, 1.0f, 1.0f, 1.0f); // Couleur blanche (R=1, G=1, B=1)
     }
 
 	/* Loop until the user closes the window */
