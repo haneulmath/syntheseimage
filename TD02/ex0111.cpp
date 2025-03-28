@@ -85,6 +85,18 @@ int main() {
     // thePoints.initSet(originPoint[0], originPoint[1], 1.0f, 1.0f, 1.0f); 
 	thePoints.initSet(originPoint, 1.0f, 1.0f, 1.0f);
 
+    // Création d'un vecteur contenant les coordonnées des points supplémentaires
+    std::vector<std::vector<float>> additionalPoints = {
+        {0.5f, 0.0f},
+        {0.0f, 0.5f},
+        {-0.5f, -0.5f}
+    };
+
+    // Ajout des points blancs aux coordonnées spécifiées
+    for (const auto& point : additionalPoints) {
+        thePoints.addPoint(point, 1.0f, 1.0f, 1.0f); // Couleur blanche (R=1, G=1, B=1)
+    }
+
 	/* Loop until the user closes the window */
 	while (!glfwWindowShouldClose(window))
 	{
