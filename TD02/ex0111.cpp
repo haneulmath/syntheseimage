@@ -82,7 +82,8 @@ int main() {
     std::vector<float> originPoint = {0.0f, 0.0f};
 
     // Initialisation d'un point blanc à l'origine
-    thePoints.initSet(originPoint[0], originPoint[1], 1.0f, 1.0f, 1.0f); // Couleur blanche (R=1, G=1, B=1)
+    // thePoints.initSet(originPoint[0], originPoint[1], 1.0f, 1.0f, 1.0f); 
+	thePoints.initSet(originPoint, 1.0f, 1.0f, 1.0f);
 
 	/* Loop until the user closes the window */
 	while (!glfwWindowShouldClose(window))
