@@ -50,19 +50,26 @@ int main() {
 
     // Créer un vector de float contenant les coordonnées des points
     std::vector<float> points = {
-		0.0f, 0.0f,  // Point à l'origine
-        0.5f, 0.0f,  // Premier point demandé
-        0.0f, 0.5f,  // Deuxième point demandé
-        -0.5f, -0.5f // Troisième point demandé
+		0.0f, 0.0f,   // Point à l'origine
+        0.5f, 0.0f,   // Point à droite
+        0.0f, 0.5f,   // Point en haut
+        -0.5f, -0.5f  // Point en bas à gauche
     };
 
     // Créer un vector de float contenant les couleurs des points (r, g, b pour chaque point)
     std::vector<float> colors = {
         1.0f, 1.0f, 1.0f,  // Blanc pour le point d'origine
-        1.0f, 0.0f, 0.0f,  // Rouge pour le deuxième point
-        0.0f, 1.0f, 0.0f,  // Vert pour le troisième point
-        0.8f, 0.0f, 0.8f   // Violet pour le quatrième point
+        1.0f, 0.0f, 0.0f,  // Rouge pour le point à droite
+        0.0f, 1.0f, 0.0f,  // Vert pour le point en haut
+        0.8f, 0.0f, 0.8f   // Violet pour le point en bas à gauche
     };
+
+    // Afficher les informations sur les points dans la console
+    std::cout << "Nombre de points initialisés: " << points.size() / 2 << std::endl;
+    for (size_t i = 0; i < points.size() / 2; i++) {
+        std::cout << "Point " << i << ": (" << points[i*2] << ", " << points[i*2+1] 
+                  << ") - Couleur: (" << colors[i*3] << ", " << colors[i*3+1] << ", " << colors[i*3+2] << ")" << std::endl;
+    }
 
     // Initialiser les points avec leurs couleurs respectives
 	thePoints.initSet(points, colors);
@@ -78,7 +85,7 @@ int main() {
 		glClear(GL_COLOR_BUFFER_BIT);
 
         // Définir la taille du point
-        glPointSize(4.0);
+        glPointSize(10.0);  // Augmentation de la taille des points
 
         // Dessiner les points
         thePoints.drawSet();
