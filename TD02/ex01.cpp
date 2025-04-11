@@ -50,20 +50,22 @@ int main() {
 
     // Créer un vector de float contenant les coordonnées des points
     std::vector<float> points = {
-		
-		{0.0f, 0.0f}
-        // {0.5f, 0.0f},
-        // {0.0f, 0.5f},
-        // {-0.5f, -0.5f}
+		0.0f, 0.0f,  // Point à l'origine
+        0.5f, 0.0f,  // Premier point demandé
+        0.0f, 0.5f,  // Deuxième point demandé
+        -0.5f, -0.5f // Troisième point demandé
     };
 
-    // Initialiser des points blancs aux coordonnées spécifiées
-    // for (const auto& point : points) {
-    //     thePoints.initSet(point, 1.0f, 1.0f, 1.0f); // Blanc
-    // }
+    // Créer un vector de float contenant les couleurs des points (r, g, b pour chaque point)
+    std::vector<float> colors = {
+        1.0f, 1.0f, 1.0f,  // Blanc pour le point d'origine
+        1.0f, 0.0f, 0.0f,  // Rouge pour le deuxième point
+        0.0f, 1.0f, 0.0f,  // Vert pour le troisième point
+        0.8f, 0.0f, 0.8f   // Violet pour le quatrième point
+    };
 
-	thePoints.initSet(points, 1.0f, 1.0f, 1.0f); // Blanc
-
+    // Initialiser les points avec leurs couleurs respectives
+	thePoints.initSet(points, colors);
 	
 	/* Loop until the user closes the window */
 	while (!glfwWindowShouldClose(window))
